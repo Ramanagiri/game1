@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #game-container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        position: relative;
+      }
+      .box {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div class="box" id="box1"></div>
+    </div>
+    <script>
+      const gameContainer = document.getElementById("game-container");
+      const box1 = document.getElementById("box1");
+      let x = 0;
+      let y = 0;
+      let dx = 5;
+      let dy = 5;
+
+      function moveBox() {
+        x += dx;
+        y += dy;
+        if (x + box1.offsetWidth > gameContainer.offsetWidth || x < 0) {
+          dx = -dx;
+        }
+        if (y + box1.offsetHeight > gameContainer.offsetHeight || y < 0) {
+          dy = -dy;
+        }
+        box1.style.left = x + "px";
+        box1.style.top = y + "px";
+      }
+
+      setInterval(moveBox, 50);
+    </script>
+  </body>
+</html>
